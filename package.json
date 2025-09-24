@@ -1,0 +1,18 @@
+{
+  "devDependencies": {
+    "cypress": "^15.3.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "nonGlobalStepDefinitions": true,
+    "stepDefinitions": "cypress/e2e/step_definitions"
+  },
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:headless": "cypress run"
+  },
+  "keywords": [
+    "cypress"
+  ],
+  "author": "Kaique Ferraz da Silva",
+  "license": "ISC",
+  "description": "Projeto de automação com cypress e cucumber para aplicação demoqa"
+}
