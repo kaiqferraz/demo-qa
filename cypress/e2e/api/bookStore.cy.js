@@ -9,7 +9,7 @@ describe("Book Store API V1", () => {
   it("DQ-1 - Deve cadastrar um usuário aleatório com sucesso", () => {
     cy.criarUsuario().then(({ response, username: u, password: p }) => {
       expect(response.status).to.eq(201);
-      userData = response.body; // pega userId
+      userData = response.body; // salva o userId
       username = u;
       password = p;
       cy.log("UserID:", userData.userID);
