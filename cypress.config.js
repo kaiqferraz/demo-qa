@@ -1,11 +1,10 @@
-const cucumber = require("cypress-cucumber-preprocessor").default; //Importação cucumber
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
+    baseUrl: "https://demoqa.com",
     setupNodeEvents(on, config) {
-      on("file:preprocessor", cucumber());
+      // implement node event listeners here
     },
-    specPattern: "cypress/e2e/step_definitions/*.feature",
   },
 });
