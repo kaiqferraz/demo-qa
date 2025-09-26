@@ -1,4 +1,4 @@
-const cucumber = require("cypress-cucumber-preprocessor").default; //Importação cucumber
+const cucumber = require("cypress-cucumber-preprocessor").default;
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
@@ -8,6 +8,10 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       on("file:preprocessor", cucumber());
     },
-    specPattern: "cypress/e2e/web/step_definitions/*.feature",
+
+    specPattern: "cypress/e2e/**/*.feature",
+  },
+  env: {
+    stepDefinitions: "cypress/e2e",
   },
 });
