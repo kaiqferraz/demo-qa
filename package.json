@@ -1,6 +1,11 @@
 {
   "devDependencies": {
-    "cypress": "^15.3.0"
+    "cypress": "^15.3.0",
+    "cypress-cucumber-preprocessor": "^4.3.1"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "stepDefinitions": "cypress/e2e/web/step_definitions"
   },
   "scripts": {
     "cypress:open": "cypress open",

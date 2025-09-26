@@ -1,3 +1,5 @@
+// APIS ----
+
 Cypress.Commands.add("criarUsuario", () => {
   // Função para gerar username aleatório (evita colisão)
   const randomUsername = `user_${Date.now()}_${Math.floor(
@@ -110,5 +112,24 @@ Cypress.Commands.add("detalhesUsuario", (userId, token) => {
       Authorization: `Bearer ${token}`, // precisa do token
     },
     failOnStatusCode: false,
+  });
+});
+
+// WEB ----
+Cypress.Commands.add("anexar", (rotaArquivo) => {
+  cy.fixture(rotaArquivo).then((exampleFile) => {
+    const nomeArquivo = rotaArquivo.split("/").pop();
+    const testFile = new File([exampleFile], nomeArquivo, {
+      type: "text/plain",
+    });
+    cy.get('input[type="file"]').then((input) => {
+      const dataTransfer = new DataTransfer();
+      dataTransfer.items.add(testFile);
+      input[0].files = dataTransfer.files;
+      cy.wrap(input).trigger("change", { force: true });
+      cy.wrap(input).then((input) => {
+        expect(input[0].files[0].name).to.equal(nomeArquivo);
+      });
+    });
   });
 });
